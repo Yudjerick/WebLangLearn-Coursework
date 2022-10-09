@@ -1,0 +1,54 @@
+canvas{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+
+button{
+    font-family: 'Russo One', sans-serif;;
+}
+
+.matchborder{
+    width: 20cm;
+    border-style: dashed;
+    display:flex;
+    flex-direction: column;
+}
+
+.matchrow{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.matchelem{
+    border-style:solid;
+    width:fit-content;
+    background-color: cornsilk;
+    padding: 5mm;
+    margin: 5mm;
+    position: relative;
+    z-index: 2;
+}
+
+.matchelemselected{
+    border-style:solid;
+    border-color: darkcyan;
+    background-color: aquamarine;
+    width:fit-content;
+    padding: 5mm;
+    margin: 5mm;
+    position: relative;
+    z-index: 2;
+}
+
+.matchelemjoint{
+    color: rgb(105, 105, 105);
+    border-style:solid;
+    border-color: rgb(175, 175, 175);
+    background-color: rgb(236, 236, 236);
+    width:fit-content;
+    padding: 5mm;
+    margin: 5mm;
+}
