@@ -51,4 +51,6 @@ button{
     width:fit-content;
     padding: 5mm;
     margin: 5mm;
+    position: relative;
+    z-index: 2;
 }
