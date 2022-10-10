@@ -1,4 +1,5 @@
 var selected = null;
+var selectedLeft = true;
 var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
 loadMatchTask(task3);
@@ -40,25 +41,46 @@ function loadMatchTask(task){
         buttons.push(matchElem2);
     }
 
-    for(var button of buttons){
-        button.addEventListener('click',function(event){
-            console.log("works");
-            if(!selected){
-                selected = event.currentTarget;
-                selected.className = "matchelemselected";
-            }
-            else{
-                connections[task.content[0].indexOf(selected.innerHTML)] = event.currentTarget.innerHTML;
-                console.log(connections);
+    for(var i = 0; i < buttons.length; i++){
+        button = buttons[i];
+        if(i%2 == 0){
+            button.addEventListener('click',function(event){
+                if(!selected){
+                    selectedLeft = true;
+                    selected = event.currentTarget;
+                    selected.className = "matchelemselected";
+                }
+                else{
+                    if(!selectedLeft){
+                        joinWords(event.currentTarget, selected);
+                    }
+                }
+            })
+        }
+        else{
+            button.addEventListener('click',function(event){
+                if(!selected){
+                    selectedLeft = false;
+                    selected = event.currentTarget;
+                    selected.className = "matchelemselected";
+                }
+                else{
+                    if(selectedLeft){
+                        joinWords(selected, event.currentTarget);
+                    }
+                }
+            })
+        }
+    }
 
-                lines.push(drawLine(selected,event.currentTarget));
-                selected.className = "matchelemjoint";
-                selected.disabled = true;
-                event.currentTarget.className = "matchelemjoint";
-                event.currentTarget.disabled = true;
-                selected = null;
-            }
-        })
+    function joinWords(from,to){
+        connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
+        lines.push(drawLine(from,to));
+        from.className = "matchelemjoint";
+        from.disabled = true;
+        to.className = "matchelemjoint";
+        to.disabled = true;
+        selected = null;
     }
     
     var clearBtn = document.createElement('button');
