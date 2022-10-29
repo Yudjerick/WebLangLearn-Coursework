@@ -1,3 +1,25 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(10deg, rgb(151, 0, 126), rgb(0, 97, 189));
+}
+
+.task-text{
+    color: whitesmoke;
+}
+
+.task-container{
+    padding: 2.5vmin;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 3vmin;
+    overflow: hidden;
+}
+
 canvas{
     position: absolute;
     top:0;
@@ -5,13 +27,12 @@ canvas{
     z-index: 1;
 }
 
-button{
-    font-family: 'Russo One', sans-serif;;
+.line-effect{
+    filter: blur(10px);
 }
 
 .matchborder{
-    width: 20cm;
-    border-style: dashed;
+    width: 40vmin;
     display:flex;
     flex-direction: column;
 }
@@ -23,34 +44,39 @@ button{
 }
 
 .matchelem{
-    border-style:solid;
     width:fit-content;
-    background-color: cornsilk;
-    padding: 5mm;
-    margin: 5mm;
+    height: fit-content;
+    background-color: rgb(193, 221, 220, 0.1);
+    color: white;
+    padding: 1vmin;
+    margin: 1vmin;
+    border: none;
     position: relative;
     z-index: 2;
+    border-radius: 2vmin;
+    filter: drop-shadow(0 0 5px rgb(202, 217, 240, 0.5));
+    border: solid 2px transparent;
+}
+
+button{
+    background-color: rgb(193, 221, 220, 0.1);
+    color: white;
+    padding: 1vmin;
+    margin: 2vmin 1vmin 1vmin 1vmin;
+    border: none;
+    position: relative;
+    z-index: 2;
+    border-radius: 2vmin;
+    filter: drop-shadow(0 0 5px rgb(202, 217, 240, 0.5));
+    border: solid 2px transparent;
 }
 
 .matchelemselected{
-    border-style:solid;
-    border-color: darkcyan;
-    background-color: aquamarine;
-    width:fit-content;
-    padding: 5mm;
-    margin: 5mm;
-    position: relative;
-    z-index: 2;
+    background-color: rgb(117, 248, 205, 0.5);
 }
 
 .matchelemjoint{
-    color: rgb(105, 105, 105);
-    border-style:solid;
-    border-color: rgb(175, 175, 175);
-    background-color: rgb(236, 236, 236);
-    width:fit-content;
-    padding: 5mm;
-    margin: 5mm;
-    position: relative;
-    z-index: 2;
+    box-sizing: border-box;
+    border: solid 2px white;
+    color:rgb(174, 174, 175);
 }

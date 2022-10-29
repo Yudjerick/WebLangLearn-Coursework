@@ -2,9 +2,10 @@ var selected = null;
 var selectedLeft = true;
 var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
-loadMatchTask(task3);
+var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
+loadMatchTask(task4, document.querySelector('#taskcont'));
 
-function loadMatchTask(task){
+function loadMatchTask(task, container){
     let div = document.createElement('div');
     let taskText = document.createElement('p');
     taskText.innerHTML = task.tasktext;
@@ -13,17 +14,17 @@ function loadMatchTask(task){
     taskBorder.className = "matchborder";
     div.append(taskBorder);
 
-    var buttons = [];
-    var lines = [];
-    var connections = [];
-    for(var i = 0; i < task.content[0].length; i++){
+    let buttons = [];
+    let lines = [];
+    let connections = [];
+    for(let i = 0; i < task.content[0].length; i++){
         connections.push("");
     }
 
     answers = [...task.content[1]];
     answers.sort(()=>Math.random()-0.5)
 
-    for(var i = 0; i < task.content[0].length; i++){
+    for(let i = 0; i < task.content[0].length; i++){
         let row = document.createElement('div');
         row.className = "matchrow";
         taskBorder.append(row);
@@ -41,7 +42,7 @@ function loadMatchTask(task){
         buttons.push(matchElem2);
     }
 
-    for(var i = 0; i < buttons.length; i++){
+    for(let i = 0; i < buttons.length; i++){
         button = buttons[i];
         if(i%2 == 0){
             button.addEventListener('click',function(event){
@@ -75,7 +76,7 @@ function loadMatchTask(task){
 
     function joinWords(from,to){
         connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-        lines.push(drawLine(from,to));
+        lines.push(drawLine(from,to,container));
         from.className = "matchelemjoint";
         from.disabled = true;
         to.className = "matchelemjoint";
@@ -83,8 +84,9 @@ function loadMatchTask(task){
         selected = null;
     }
     
-    var clearBtn = document.createElement('button');
+    let clearBtn = document.createElement('button');
     clearBtn.innerHTML = "Clear connections";
+    clearBtn.style.zIndex = 2;
     clearBtn.addEventListener('click',function(){
         for(var line of lines){
             line.remove();
@@ -96,12 +98,13 @@ function loadMatchTask(task){
     });
     div.append(clearBtn);
 
-    var checkBtn = document.createElement('button'); //works correctly only if left word picked first
+    let checkBtn = document.createElement('button'); //works correctly only if left word picked first
+    checkBtn.style.zIndex = 4;
     checkBtn.innerHTML = "Check";
     checkBtn.addEventListener('click',function(){
         console.log(task.content[1]);
         console.log(connections);
-        for(var i = 0; i < task.content[0].length; i++){
+        for(let i = 0; i < task.content[0].length; i++){
             if(task.content[1][i] == connections[i]){
                 buttons[i*2].style.backgroundColor = "lightgreen";
             }
@@ -112,10 +115,10 @@ function loadMatchTask(task){
     });
     div.append(checkBtn);
     
-    document.body.append(div);
+    container.append(div);
 }
 
-function drawLine(from,to){
+function drawLine(from,to,container){
     var canvas = document.createElement('canvas');
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
@@ -131,6 +134,6 @@ function drawLine(from,to){
     ctx.moveTo(pointFrom.x, pointFrom.y);    
     ctx.lineTo(pointTo.x, pointTo.y); 
     ctx.stroke();
-    document.body.append(canvas);
+    container.append(canvas);
     return canvas;
 }
