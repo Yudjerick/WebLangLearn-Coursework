@@ -6,10 +6,31 @@ var task2 = { type: "match", tasktext: "Match words and translations", content: 
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
 var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
 
-load_button = document.querySelector('#load_json');
-load_button.addEventListener('click', function() {
+load_button1 = document.querySelector('#load_json1');
+load_button2 = document.querySelector('#load_json2');
+load_button3 = document.querySelector('#load_json3');
+let loadButtons = [load_button1,load_button2,load_button3];
+
+load_button1.addEventListener('click', function() {
     loadTask(task2, document.querySelector('.task-container'));
+    hideLoadButtons();
 });
+
+load_button2.addEventListener('click', () =>{
+    loadTask(task1, document.querySelector('.task-container'));
+    hideLoadButtons();
+});
+
+load_button3.addEventListener('click', () =>{
+    loadTask(task3, document.querySelector('.task-container'));
+    hideLoadButtons();
+});
+
+function hideLoadButtons(){
+    for (let i of loadButtons) {
+        i.style.visibility = 'hidden';
+    }
+}
 
 function loadTask(task, container = document.body) {
     switch (task.type) {
@@ -56,9 +77,9 @@ function loadMatchTask(task, container){
     let taskText = document.createElement('p');
     taskText.innerHTML = task.tasktext;
     taskText.className = 'task-text';
-    div.append(taskText);
     let taskBorder = document.createElement('div');
     taskBorder.className = "matchborder";
+    taskBorder.prepend(taskText);
     div.append(taskBorder);
 
     let buttons = [];
@@ -171,7 +192,7 @@ function loadMatchTask(task, container){
         }
         joinedButtons = [];
     });
-    div.append(clearBtn);
+    taskBorder.append(clearBtn);
 
     let checkBtn = document.createElement('button'); //works correctly only if left word picked first
     checkBtn.style.zIndex = 4;
@@ -188,7 +209,7 @@ function loadMatchTask(task, container){
             }
         }
     });
-    div.append(checkBtn);
+    taskBorder.append(checkBtn);
     
     container.append(div);
 }

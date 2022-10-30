@@ -40,12 +40,14 @@ canvas{
 }
 
 .matchborder{
-    width: 40vmin;
+    width: 70vmin;
     display:flex;
+    justify-content: space-around;
     flex-direction: column;
 }
 
 .matchrow{
+    width: 100%;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -67,6 +69,7 @@ canvas{
 }
 
 button{
+    display: inline-block;
     background-color: rgb(193, 221, 220, 0.1);
     color: white;
     padding: 1vmin;
