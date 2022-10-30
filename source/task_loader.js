@@ -2,13 +2,13 @@ let selected = null;
 let selectedLeft = true;
 
 let task1 = { type: "test", tasktext: "Pick a synonym to 'funny'" ,content: ["sad", "boring", "hillarious", "generous"], answer: "hillarious"}
-let task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
-
-
+var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
+var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
+var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
 
 load_button = document.querySelector('#load_json');
 load_button.addEventListener('click', function() {
-    loadTask(task3, document.querySelector('.task-container'));
+    loadTask(task2, document.querySelector('.task-container'));
 });
 
 function loadTask(task, container = document.body) {
@@ -23,16 +23,16 @@ function loadTask(task, container = document.body) {
     }
 }
 
-function loadTestTask(task){
+function loadTestTask(task, container){
     let div = document.createElement('div');
-    div.className = "task";
+    div.className = "test-task";
     var innerStr = "<p>" + task.tasktext + "</p>";
     for (var i = 0; i < task.content.length; i++) {
         innerStr += '<p><input type="radio" name="a" value="'+ task.content[i] +'">' + task.content[i] + '</input></p>';
     }
     innerStr += '<input type="submit" id="button">';
     div.innerHTML = innerStr;
-    document.body.append(div);
+    container.append(div);
     let button = document.querySelector('#button');
     let radios = document.querySelectorAll('input[type="radio"]');
     button.addEventListener('click', function() {
@@ -162,13 +162,14 @@ function loadMatchTask(task, container){
     clearBtn.innerHTML = "Clear connections";
     clearBtn.style.zIndex = 2;
     clearBtn.addEventListener('click',function(){
-        for(var line of lines){
+        for(let line of lines){
             line.remove();
         }
-        for(var button of buttons){
+        for(let button of buttons){
             button.disabled = false;
             button.className = "matchelem";
         }
+        joinedButtons = [];
     });
     div.append(clearBtn);
 
