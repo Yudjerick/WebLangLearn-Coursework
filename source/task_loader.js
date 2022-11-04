@@ -77,6 +77,8 @@ function loadTestTask(task, container){
 }
 
 function loadMatchTask(task, container){
+    let svgContainer = document.createElementNS('http://www.w3.org/2000/svg','svg');;
+    document.body.prepend(svgContainer);
     let div = document.createElement('div');
     let taskText = document.createElement('p');
     taskText.innerHTML = task.tasktext;
@@ -229,36 +231,42 @@ function loadOrderTask(task, container)
     taskText.className = 'task-text';
     let taskBorder = document.createElement('div');
     taskBorder.className = "order-task-container";
+    let taskBorder2 = document.createElement('div');
+    taskBorder2.className = "order-task-dropzone";
+    taskBorder2.id = "drop-zone";
     div.prepend(taskText);
+    div.append(taskBorder2);
     div.append(taskBorder);
+    taskBorder2.ondragover = allowDrop;
+    taskBorder2.ondrop = drop;
+
+    
     for(let i of task.content){
         let orderElem = document.createElement('button');
         orderElem.className = "order-elem";
+        orderElem.id = 'order-elem-' + i;
         orderElem.innerHTML = i;
+        orderElem.draggable = true;
+        orderElem.ondragstart = drag;
         taskBorder.append(orderElem);
-        orderElem.addEventListener('mousedown', function(e) {
-            active = e.currentTarget;
-            //document.body.append(active);
-            mouseShiftX = e.clientX - active.getBoundingClientRect().left;
-            mouseShiftY= e.clientY - active.getBoundingClientRect().top;
-            active.style.left = active.getBoundingClientRect().left;
-            active.style.top = active.getBoundingClientRect().top;
-            active.style.position = 'absolute';
-        })
     }
-    document.addEventListener('mouseup', function(e) {
-        active = null;
-    })
-    document.addEventListener('mousemove', function(e){
-        if(active!=null){
-            console.log(e.clientX);
-            active.style.left = (e.clientX - mouseShiftX) + "px";
-            active.style.top = (e.clientY - mouseShiftY) + "px";
-        }
-    })
     container.append(div);
 }
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+  
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log(ev.target.id);
+}
+  
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
 
 function drawLine(from,to,container,color = '#f2f7ff'){
     var canvas = document.createElement('canvas');
@@ -289,7 +297,7 @@ function drawLineSVG(from,to,container,color = '#f2f7ff'){
     var boxTo = to.getBoundingClientRect();
     var pointFrom = {x:boxFrom.right, y:boxFrom.top + boxFrom.height/2};
     var pointTo = {x:boxTo.left, y:boxTo.top + boxTo.height/2};
-    let line = document.createElementNS('http://www.w3.org/2000/svg','line');;
+    let line = document.createElementNS('http://www.w3.org/2000/svg','line');
     svg.append(line);
     line.setAttribute('x1',pointFrom.x);
     line.setAttribute('y1',pointFrom.y);
