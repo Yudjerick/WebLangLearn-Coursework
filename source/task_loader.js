@@ -5,6 +5,7 @@ let task1 = { type: "test", tasktext: "Pick a synonym to 'funny'" ,content: ["sa
 var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
 var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
+let task5 = { type: 'order',tasktext: 'Put words in correct order', content: ['Have','you','ever','been','in','Paris','?']};
 
 load_button1 = document.querySelector('#load_json1');
 load_button2 = document.querySelector('#load_json2');
@@ -22,7 +23,7 @@ load_button2.addEventListener('click', () =>{
 });
 
 load_button3.addEventListener('click', () =>{
-    loadTask(task3, document.querySelector('.task-container'));
+    loadTask(task5, document.querySelector('.task-container'));
     hideLoadButtons();
 });
 
@@ -39,6 +40,9 @@ function loadTask(task, container = document.body) {
             break;
         case 'match':
             loadMatchTask(task, container);
+            break;
+        case 'order':
+            loadOrderTask(task,container);
         default:
             break;
     }
@@ -213,6 +217,48 @@ function loadMatchTask(task, container){
     
     container.append(div);
 }
+
+function loadOrderTask(task, container)
+{
+    let mouseShiftX = 0;
+    let mouseShiftY = 0;
+    let active = null;
+    let div = document.createElement('div');
+    let taskText = document.createElement('p');
+    taskText.innerHTML = task.tasktext;
+    taskText.className = 'task-text';
+    let taskBorder = document.createElement('div');
+    taskBorder.className = "order-task-container";
+    div.prepend(taskText);
+    div.append(taskBorder);
+    for(let i of task.content){
+        let orderElem = document.createElement('button');
+        orderElem.className = "order-elem";
+        orderElem.innerHTML = i;
+        taskBorder.append(orderElem);
+        orderElem.addEventListener('mousedown', function(e) {
+            active = e.currentTarget;
+            //document.body.append(active);
+            mouseShiftX = e.clientX - active.getBoundingClientRect().left;
+            mouseShiftY= e.clientY - active.getBoundingClientRect().top;
+            active.style.left = active.getBoundingClientRect().left;
+            active.style.top = active.getBoundingClientRect().top;
+            active.style.position = 'absolute';
+        })
+    }
+    document.addEventListener('mouseup', function(e) {
+        active = null;
+    })
+    document.addEventListener('mousemove', function(e){
+        if(active!=null){
+            console.log(e.clientX);
+            active.style.left = (e.clientX - mouseShiftX) + "px";
+            active.style.top = (e.clientY - mouseShiftY) + "px";
+        }
+    })
+    container.append(div);
+}
+
 
 function drawLine(from,to,container,color = '#f2f7ff'){
     var canvas = document.createElement('canvas');
