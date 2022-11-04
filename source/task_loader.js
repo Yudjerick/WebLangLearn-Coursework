@@ -96,10 +96,10 @@ function loadMatchTask(task, container){
         }
         function rejoinWords(from,to){
             connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-            lines.push(drawLineSVG(from,to,container));
-            let lineEffect = drawLine(from,to,container);
-            lineEffect.className = 'line-effect';
-            lines.push(lineEffect);
+            lines.push(drawCurveSVG(from,to,container));
+            //let lineEffect = drawLine(from,to,container);
+            //lineEffect.className = 'line-effect';
+            //lines.push(lineEffect);
             from.className = "matchelem matchelemjoint";
             from.disabled = true;
             to.className = "matchelem matchelemjoint";
@@ -166,10 +166,10 @@ function loadMatchTask(task, container){
 
     function joinWords(from,to){
         connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-        lines.push(drawLineSVG(from,to,container));
-        let lineEffect = drawLine(from,to,container);
-        lineEffect.className = 'line-effect';
-        lines.push(lineEffect);
+        lines.push(drawCurveSVG(from,to,container));
+        //let lineEffect = drawLine(from,to,container);
+        //lineEffect.className = 'line-effect';
+        //lines.push(lineEffect);
         joinedButtons.push(from);
         joinedButtons.push(to);
         from.className = "matchelem matchelemjoint";
@@ -251,4 +251,20 @@ function drawLineSVG(from,to,container,color = '#f2f7ff'){
     line.setAttribute('y2',pointTo.y);
     line.style = `stroke:${color};stroke-width:2`;
     return line;
+}
+
+function drawCurveSVG(from,to,container,color = '#f2f7ff'){
+    let svg = document.querySelector("svg");
+    var boxFrom = from.getBoundingClientRect();
+    var boxTo = to.getBoundingClientRect();
+    var pointFrom = {x:boxFrom.right, y:boxFrom.top + boxFrom.height/2};
+    var pointTo = {x:boxTo.left, y:boxTo.top + boxTo.height/2};
+    let path = document.createElementNS('http://www.w3.org/2000/svg','path');;
+    svg.append(path);
+    let distanceX = pointTo.x = pointTo.x;
+    let cx1 = pointFrom.x + distanceX/5;
+    let cx2 = pointTo.x - distanceX/5;
+    path.setAttribute('d',`M ${pointFrom.x}, ${pointFrom.y} C ${cx1}, ${pointFrom.y} ${cx2}, ${pointTo.y} ${pointTo.x}, ${pointTo.y}`);
+    path.style = `stroke:${color};stroke-width:2;fill:none`;
+    return path;
 }
