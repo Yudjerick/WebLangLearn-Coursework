@@ -96,7 +96,7 @@ function loadMatchTask(task, container){
         }
         function rejoinWords(from,to){
             connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-            lines.push(drawLine(from,to,container));
+            lines.push(drawLineSVG(from,to,container));
             let lineEffect = drawLine(from,to,container);
             lineEffect.className = 'line-effect';
             lines.push(lineEffect);
@@ -166,7 +166,7 @@ function loadMatchTask(task, container){
 
     function joinWords(from,to){
         connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-        lines.push(drawLine(from,to,container));
+        lines.push(drawLineSVG(from,to,container));
         let lineEffect = drawLine(from,to,container);
         lineEffect.className = 'line-effect';
         lines.push(lineEffect);
@@ -235,4 +235,20 @@ function drawLine(from,to,container,color = '#f2f7ff'){
     
     container.append(canvas);
     return canvas;
+}
+
+function drawLineSVG(from,to,container,color = '#f2f7ff'){
+    let svg = document.querySelector("svg");
+    var boxFrom = from.getBoundingClientRect();
+    var boxTo = to.getBoundingClientRect();
+    var pointFrom = {x:boxFrom.right, y:boxFrom.top + boxFrom.height/2};
+    var pointTo = {x:boxTo.left, y:boxTo.top + boxTo.height/2};
+    let line = document.createElementNS('http://www.w3.org/2000/svg','line');;
+    svg.append(line);
+    line.setAttribute('x1',pointFrom.x);
+    line.setAttribute('y1',pointFrom.y);
+    line.setAttribute('x2',pointTo.x);
+    line.setAttribute('y2',pointTo.y);
+    line.style = `stroke:${color};stroke-width:2`;
+    return line;
 }
