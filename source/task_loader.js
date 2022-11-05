@@ -222,9 +222,7 @@ function loadMatchTask(task, container){
 
 function loadOrderTask(task, container)
 {
-    let mouseShiftX = 0;
-    let mouseShiftY = 0;
-    let active = null;
+    let orderedElements = [];
     let div = document.createElement('div');
     let taskText = document.createElement('p');
     taskText.innerHTML = task.tasktext;
@@ -240,6 +238,50 @@ function loadOrderTask(task, container)
     taskBorder2.ondragover = allowDrop;
     taskBorder2.ondrop = drop;
 
+    function allowDrop(ev) {
+        ev.preventDefault();
+        let data = ev.dataTransfer.getData("text");
+        /*if(!document.querySelector('.marker')){
+            marker = document.createElement('div');
+            marker.className = 'marker';
+            taskBorder2.append(marker);
+        }*/
+        
+    }
+      
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+      
+    function drop(ev) {
+        ev.preventDefault();
+        
+        let node = null;
+        var data = ev.dataTransfer.getData("text");
+        let item = document.getElementById(data);
+        if(orderedElements.includes(item)){
+            orderedElements.splice(orderedElements.indexOf(item),1);
+        }
+        if(orderedElements.length > 0){
+            console.log(ev.pageX);
+            for(let i of orderedElements){
+                if (ev.pageX > i.getBoundingClientRect().left + i.getBoundingClientRect().width/2){
+                    node = i;
+                } 
+            }
+        }
+        if(node != null){
+            node.after(item);
+            orderedElements.splice(orderedElements.indexOf(node)+1, 0, item);
+            console.log(orderedElements);
+        }
+        else{
+            ev.target.prepend(item);
+            orderedElements.unshift(item);
+            console.log(orderedElements);
+        }
+        
+    }
     
     for(let i of task.content){
         let orderElem = document.createElement('button');
@@ -253,20 +295,7 @@ function loadOrderTask(task, container)
     container.append(div);
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-  
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    console.log(ev.target.id);
-}
-  
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
+
 
 function drawLine(from,to,container,color = '#f2f7ff'){
     var canvas = document.createElement('canvas');
