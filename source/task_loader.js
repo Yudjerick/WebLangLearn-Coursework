@@ -235,18 +235,25 @@ function loadOrderTask(task, container)
     div.prepend(taskText);
     div.append(taskBorder2);
     div.append(taskBorder);
+    checkBtn = document.createElement('button');
+    checkBtn.innerHTML = "Check";
+    div.append(checkBtn);
+    checkBtn.onclick = (e)=>{
+        for(let i = 0; i < orderedElements.length; i++){
+            if(orderedElements[i].innerHTML == task.content[i]){
+                orderedElements[i].style.backgroundColor = "lightgreen";
+            }
+            else{
+                orderedElements[i].style.backgroundColor = "lightcoral";
+            }
+        }
+    }
     taskBorder2.ondragover = allowDrop;
     taskBorder2.ondrop = drop;
 
     function allowDrop(ev) {
         ev.preventDefault();
-        let data = ev.dataTransfer.getData("text");
-        /*if(!document.querySelector('.marker')){
-            marker = document.createElement('div');
-            marker.className = 'marker';
-            taskBorder2.append(marker);
-        }*/
-        
+        let data = ev.dataTransfer.getData("text"); 
     }
       
     function drag(ev) {
