@@ -289,8 +289,11 @@ function loadOrderTask(task, container)
         }
         
     }
+
+    answers = [...task.content];
+    answers.sort(()=>Math.random()-0.5)
     
-    for(let i of task.content){
+    for(let i of answers){
         let orderElem = document.createElement('button');
         orderElem.className = "order-elem";
         orderElem.id = 'order-elem-' + i;

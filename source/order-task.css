@@ -9,7 +9,7 @@
 .order-task-dropzone{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: start;
     min-height: 7vh;
     position: relative;
     border-radius: 3vmin;
