@@ -1,0 +1,155 @@
+body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    position: relative;
+}
+
+.header{
+    background-image: linear-gradient(rgb(111, 0, 255), rgb(146, 0, 243));
+    padding: 0;
+    margin: 0;
+}
+
+.header-text{
+    margin: 0;
+    padding: 0;
+    font-family: 'Russo One', sans-serif;
+    font-size: 5vmin;
+    color: aliceblue;
+    text-align: center;
+}
+
+.options-container{
+    width: 85%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr 1fr auto
+}
+
+.option-icon{
+    border: solid gainsboro 2px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.option-text{
+    border: solid rgb(130, 144, 156) 2px;
+    height: 100%;
+}
+
+.nav-container{
+    background-color: rgb(51, 54, 59);
+    flex-grow: 2;
+}
+
+.author{
+    border-top: 2px black solid;
+    height: 15vmin;
+    grid-column: span 3;
+}
+
+.word-card{
+    height: 16vmax;
+    aspect-ratio: 2/3;
+    border-radius: 1vmax;
+    border: 0.4vmin gray solid;
+    transition: 0.3s;
+    background-color: rgb(255, 255, 255);
+    transform-origin: bottom;
+}
+
+.word-card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-card{
+    z-index: 2;
+    position: relative;
+}
+
+.rotated-text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Russo One', sans-serif;
+    color: gray;
+    font-size: 3vmax;
+    margin: 0.2vmax;
+}
+
+.card-text{
+    text-orientation: mixed;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    color: gray;
+    font-size: 1vmax;
+    margin: 0.2vmax;
+}
+
+.symbol-top{
+    font-family: 'Russo One', sans-serif;
+    color: gray;
+    font-size: 2vmax;
+    align-self: flex-start;
+    margin: 0.2vmax;
+}
+
+.symbol-bottom{
+    font-family: 'Russo One', sans-serif;
+    color: gray;
+    font-size: 2vmax;
+    align-self: flex-end;
+    margin: 0.2vmax;
+}
+
+.left-card, .right-card{
+    position: absolute;
+}
+
+.diamond{
+    position: absolute;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight:100;
+    color: gray;
+
+    font-size: 6vmax;
+    margin: 0.3vmax;
+}
+
+.right-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+    background-color: blanchedalmond;
+}
+
+.word-card-container:hover > .left-card{
+    
+    transform: rotate(-15deg);
+    
+}
+
+.word-card-container:hover > .right-card{
+    transform: rotate(15deg);
+}
