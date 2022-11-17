@@ -38,7 +38,6 @@ main{
 }
 
 .option-icon{
-    border: solid gainsboro 2px;
     height: 100%;
     position: relative;
     display: flex;
@@ -47,9 +46,16 @@ main{
     align-items: center;
 }
 
-.option-text{
-    border: solid rgb(130, 144, 156) 2px;
+.option-text-container{
     height: 100%;
+}
+
+.option-text{
+    font-family: 'Russo One', sans-serif;
+    font-size: 1vmax;
+    padding: 2vmax;
+    color: black;
+    text-align: center;
 }
 
 .nav-container{
@@ -58,7 +64,7 @@ main{
 }
 
 .author{
-    border-top: 2px black solid;
+    background-color: blanchedalmond;
     height: 15vmin;
     grid-column: span 3;
 }
