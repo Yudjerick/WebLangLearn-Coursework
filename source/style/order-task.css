@@ -13,7 +13,8 @@
     min-height: 7vh;
     position: relative;
     border-radius: 3vmin;
-    border: solid aliceblue 2px;
+    border: solid rgb(173, 182, 190) 2px;
+    overflow:hidden;
 }
 
 .order-elem{

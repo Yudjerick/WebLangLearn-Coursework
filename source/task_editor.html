@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WebLangLearn</title>
+        <link rel="icon" href="https://cdn.icon-icons.com/icons2/516/PNG/512/language_learn_icon-icons.com_51070.png">
+        <link rel="stylesheet" href="style/editor.css">
+        <link rel="stylesheet" href="style/general_style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <h1>WebLangLearn</h1>
+        </header>
+        <main>
+            <nav class="nav-container">
+                <form class="nav-container">
+                    <button class="nav-button">
+                        <p class="nav-button-text">Главная</p>
+                    </button>
+                    <button class="nav-button">
+                        <p class="nav-button-text">Карточки</p>
+                    </button>
+                    <button class="nav-button" formaction="tasks.html">
+                        <p class="nav-button-text">Задания</p>
+                    </button>
+                    <button class="nav-button">
+                        <p class="nav-button-text">Редактор</p>
+                    </button>
+                    <button class="nav-button">
+                        <p class="nav-button-text">Контакты</p>
+                    </button>
+                </form>
+            </nav>
+            <div class="editor-frame">
+                <div class="match-pair-list" id="match-pair-list">
+                </div>
+            </div>
+            <button id="add-pair">+</button>
+            <a id="download">Save</a>
+            <script src="js/editor.js"></script>
+        </main>
+    </body>
+</html>

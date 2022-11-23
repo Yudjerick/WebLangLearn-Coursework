@@ -1,7 +1,7 @@
 let selected = null;
 let selectedLeft = true;
 
-let task1 = { type: "test", tasktext: "Pick a synonym to 'funny'" ,content: ["sad", "boring", "hillarious", "generous"], answer: "hillarious"}
+let task1 = {"type":"match","tasktext":"","content":[["Fun","Fuck","Fan"],["Смешно","Ебать","Фанат"]]}
 var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
 var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
@@ -13,12 +13,12 @@ load_button3 = document.querySelector('#load_json3');
 let loadButtons = [load_button1,load_button2,load_button3];
 
 load_button1.addEventListener('click', function() {
-    loadTask(task2, document.querySelector('.task-container'));
+    loadTask(task1, document.querySelector('.task-container'));
     hideLoadButtons();
 });
 
 load_button2.addEventListener('click', () =>{
-    loadTask(task1, document.querySelector('.task-container'));
+    loadTask(task3, document.querySelector('.task-container'));
     hideLoadButtons();
 });
 
@@ -102,10 +102,7 @@ function loadMatchTask(task, container){
         }
         function rejoinWords(from,to){
             connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-            lines.push(drawCurveSVG(from,to,container));
-            //let lineEffect = drawLine(from,to,container);
-            //lineEffect.className = 'line-effect';
-            //lines.push(lineEffect);
+            lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
             from.className = "matchelem matchelemjoint";
             from.disabled = true;
             to.className = "matchelem matchelemjoint";
@@ -172,10 +169,7 @@ function loadMatchTask(task, container){
 
     function joinWords(from,to){
         connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-        lines.push(drawCurveSVG(from,to,container));
-        //let lineEffect = drawLine(from,to,container);
-        //lineEffect.className = 'line-effect';
-        //lines.push(lineEffect);
+        lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
         joinedButtons.push(from);
         joinedButtons.push(to);
         from.className = "matchelem matchelemjoint";
@@ -197,10 +191,14 @@ function loadMatchTask(task, container){
             button.className = "matchelem";
         }
         joinedButtons = [];
+        connections = [];
+        for(let i = 0; i < task.content[0].length; i++){
+            connections.push("");
+        }
     });
     taskBorder.append(clearBtn);
 
-    let checkBtn = document.createElement('button'); //works correctly only if left word picked first
+    let checkBtn = document.createElement('button');
     checkBtn.style.zIndex = 4;
     checkBtn.innerHTML = "Check";
     checkBtn.addEventListener('click',function(){
@@ -266,6 +264,11 @@ function loadOrderTask(task, container)
         let node = null;
         var data = ev.dataTransfer.getData("text");
         let item = document.getElementById(data);
+        if(orderedElements.length == 0){
+            ev.target.prepend(item);
+            orderedElements.unshift(item);
+            return;
+        }
         if(orderedElements.includes(item)){
             orderedElements.splice(orderedElements.indexOf(item),1);
         }
@@ -283,7 +286,7 @@ function loadOrderTask(task, container)
             console.log(orderedElements);
         }
         else{
-            ev.target.prepend(item);
+            orderedElements[0].before(item);
             orderedElements.unshift(item);
             console.log(orderedElements);
         }
@@ -346,7 +349,7 @@ function drawLineSVG(from,to,container,color = '#f2f7ff'){
     return line;
 }
 
-function drawCurveSVG(from,to,container,color = '#f2f7ff'){
+function drawCurveSVG(from,to,container,color = '#222222'){
     let svg = document.querySelector("svg");
     var boxFrom = from.getBoundingClientRect();
     var boxTo = to.getBoundingClientRect();
