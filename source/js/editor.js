@@ -12,13 +12,20 @@ document.getElementById('download').onclick = function() {
     this.download = 'data.txt';
 }
 
-
-
 function addEmptyPair(){
     let newPair = document.createElement('div');
     newPair.className = 'match-pair';
-    newPair.innerHTML = '<input type="text" placeholder="A"><input type="text" placeholder="B">';
+    newPair.innerHTML = '<input type="text" class="input-pair" placeholder="A"><input type="text" class="input-pair" placeholder="B">';
+    del_btn = document.createElement('button');
+    del_btn.innerHTML = '-';
+    del_btn.className = 'del-button';
+    del_btn.onclick = ()=>{
+        pairs.splice(pairs.indexOf(this.parent));
+        newPair.remove();
+        console.log(pairs);
+    }
     pairs.push(newPair);
+    newPair.append(del_btn);
     listContainer.append(newPair);
 }
 

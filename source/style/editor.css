@@ -19,4 +19,17 @@
     background-color: aqua;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-pair{
+    width: 10vmin;
+    border-radius: 1vmin;
+}
+
+.del-button{
+    background-color: rgb(212, 68, 68);
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    border: solid white 1px;
 }

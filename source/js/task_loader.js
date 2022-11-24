@@ -1,7 +1,7 @@
 let selected = null;
 let selectedLeft = true;
 
-let task1 = {"type":"match","tasktext":"","content":[["Fun","Fuck","Fan"],["Смешно","Ебать","Фанат"]]}
+let task1 = {"type":"match","tasktext":"","content":[["word","mouth"],["слово","рот"]]}
 var task2 = { type: "match", tasktext: "Match words and translations", content: [["general","generous","genetic"],["основной","щедрый","генетический"]]}
 var task3 = { type: "match", tasktext: "Match words and translations", content: [["brave","brain","bread","bird","break","beard"],["смелый","мозг","хлеб","птица","перерыв","борода"]]}
 var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
@@ -26,6 +26,15 @@ load_button3.addEventListener('click', () =>{
     loadTask(task5, document.querySelector('.task-container'));
     hideLoadButtons();
 });
+
+function readFile(input){
+    let reader = new FileReader();
+    reader.readAsText(input.files[0]);
+    reader.onload = ()=>{
+        loadTask(JSON.parse(reader.result), document.querySelector('.task-container'));
+        return reader.result;
+    }
+}
 
 function hideLoadButtons(){
     for (let i of loadButtons) {
