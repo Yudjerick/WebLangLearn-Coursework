@@ -30,7 +30,8 @@ function addEmptyPair(){
 }
 
 function makeJSON(){
-    let result = { type: "match", tasktext: ""};
+    let result = { type: "match"};
+    result.tasktext = document.getElementById('tasktext').value;
     a = [];
     b = [];
     for (const i of pairs) {

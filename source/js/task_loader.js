@@ -119,6 +119,23 @@ function loadMatchTask(task, container){
         }
     })
 
+    container.addEventListener('scroll',()=>{
+        for(var line of lines){
+            line.remove();
+        }
+        for(let i = 0; i < joinedButtons.length; i+=2){
+            rejoinWords(joinedButtons[i],joinedButtons[i+1]);
+        }
+        function rejoinWords(from,to){
+            connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
+            lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
+            from.className = "matchelem matchelemjoint";
+            from.disabled = true;
+            to.className = "matchelem matchelemjoint";
+            to.disabled = true;
+        }
+    })
+
     for(let i = 0; i < task.content[0].length; i++){
         connections.push("");
     }
