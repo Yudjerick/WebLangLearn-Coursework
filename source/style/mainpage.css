@@ -15,7 +15,7 @@ main{
 }
 
 .options-container{
-    width: 85%;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
