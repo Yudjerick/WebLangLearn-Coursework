@@ -6,13 +6,31 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 svg{
     position: absolute;
     width: 100vw;
     height: 100vh;
+    z-index: 7;
+    pointer-events: none;
+}
+
+.task-zone{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .test-task{
@@ -24,13 +42,29 @@ svg{
 .task-text{
     padding-left: 1vmin;
     font-family: 'Russo One', sans-serif;
-    color: rgb(34, 34, 34);
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding-bottom: 3vmin;
+    z-index: 3;
+}
+
+.task-text::after{
+    left: -50vmin;
+    content: '';
+    position: absolute;
+    background-color: rgb(53, 0, 102);;
+    width: 200vmax;
+    height: 100vmin;
+    bottom: 0;
+    z-index: -1;
 }
 
 .task-container{
     padding: 2.5vmin;
-    width: 70vmin;
-    background-color: rgba(255, 255, 255, 1);
+    width: 90vw;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.205);
+    backdrop-filter: blur(10px);
     border-radius: 3vmin;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -54,7 +88,6 @@ canvas{
 }
 
 .matchborder{
-    width: 70vmin;
     display:flex;
     justify-content: space-around;
     flex-direction: column;
@@ -83,12 +116,13 @@ canvas{
     border: solid 2px transparent;
 }
 
+
 button{
     font-family: 'Russo One', sans-serif;
     width:fit-content;
     height: fit-content;
-    background-color: rgba(255, 255, 255, 1);
-    color: rgb(34, 34, 34);
+    background-color: rgb(53, 0, 102);
+    color: rgb(255, 255, 255);
     padding: 1vmin;
     margin: 1vmin;
     border: none;
@@ -105,6 +139,48 @@ button{
 
 .matchelemjoint{
     box-sizing: border-box;
-    border: solid 2px#4f4f4f;
+    border: solid 2px rgb(53, 0, 102);
     color:rgb(174, 174, 175);
+}
+
+.order-elem{
+    font-family: 'Russo One', sans-serif;
+    width:fit-content;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(34, 34, 34);
+    padding: 1vmin;
+    margin: 1vmin;
+    border: none;
+    position: relative;
+    z-index: 2;
+    border-radius: 2vmin;
+    filter: drop-shadow(0 0 5px rgba(82, 86, 92, 0.5));
+    border: solid 2px transparent;
+}
+
+.order-task-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 7vh;
+    position: relative;
+}
+
+.order-task-dropzone{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    min-height: 7vh;
+    position: relative;
+    border-radius: 3vmin;
+    border: solid rgb(255, 255, 255) 2px;
+    overflow:hidden;
+}
+
+.info{
+    font-family: 'Russo One', sans-serif;
+    margin: 0;
+    padding: 2vmin;
+    background-color: blanchedalmond;
 }

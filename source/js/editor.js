@@ -6,7 +6,8 @@ document.getElementById('add-pair').onclick = ()=>{
 }
 
 document.getElementById('download').onclick = function() {
-    let text = JSON.stringify(makeJSON());
+    //let text = JSON.stringify(makeJSON());
+    let text = JSON.stringify(makeWordPairs());
     let myData = 'data:application/txt;charset=utf-8,' + encodeURIComponent(text);
     this.href = myData;
     this.download = 'data.txt';
@@ -27,6 +28,17 @@ function addEmptyPair(){
     pairs.push(newPair);
     newPair.append(del_btn);
     listContainer.append(newPair);
+}
+
+function makeWordPairs(){
+    let results = [];
+    for (const i of pairs) {
+        let pair = {};
+        pair.eng = i.children[0].value;
+        pair.ru = i.children[1].value;
+        results.push(pair);
+    }
+    return results;
 }
 
 function makeJSON(){

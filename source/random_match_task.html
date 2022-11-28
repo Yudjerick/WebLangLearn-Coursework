@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tasks</title>
+        <link rel="icon" href="https://cdn.icon-icons.com/icons2/516/PNG/512/language_learn_icon-icons.com_51070.png">
+        <link rel="stylesheet" href="style/experiments.css">
+        <link rel="stylesheet" href="style/general_style.css">
+        <link rel="stylesheet" href="style/background_blobs.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <h1>WebLangLearn</h1>
+        </header>
+        <var style="visibility:hidden; position:absolute" id="random-task-type">match</var>
+        <div class="info">Some info about how this type of tasks works</div>
+        <div class="task-zone">
+            <div class="task-container"></div>
+            <form class="categories">
+                <p><input type="checkbox" id="animals" checked>Animals</p>
+                <p><input type="checkbox" id="psyhology" >Psyhology</p>
+                <button id="next-task">Next task</button>
+            </form>
+            
+        </div>
+        <script src="js/storage.js"></script>
+        <script type="text/javascript" src="js/task_loader.js"></script>
+        <script src="js/background_blobs.js"></script>
+    </body>
+</html>

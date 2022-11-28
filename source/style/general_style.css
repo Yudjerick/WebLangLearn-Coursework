@@ -36,11 +36,6 @@ nav{
     flex-direction: row;
 }
 
-.nav-arrow-button{
-    width: 4vmin;
-    background-color: grey;
-}
-
 .nav-container{
     overflow: hidden;
     background-color: rgb(51, 54, 59);

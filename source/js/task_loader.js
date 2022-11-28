@@ -7,25 +7,65 @@ var task3 = { type: "match", tasktext: "Match words and translations", content: 
 var task4 = { type: "match", tasktext: "Match words and their meanings", content: [["ergonomics","economics","etymology"],["the study of people's efficiency in their working environment","the branch of knowledge concerned with the production, consumption, and transfer of wealth","the history of a linguistic form (such as a word) shown by tracing its development since its earliest recorded occurrence in the language where it is found, by tracing its transmission from one language to another, by analyzing it into its component parts, by identifying its cognates in other languages, or by tracing it and its cognates to a common ancestral form in an ancestral language"]]}
 let task5 = { type: 'order',tasktext: 'Put words in correct order', content: ['Have','you','ever','been','in','Paris','?']};
 
-load_button1 = document.querySelector('#load_json1');
-load_button2 = document.querySelector('#load_json2');
-load_button3 = document.querySelector('#load_json3');
-let loadButtons = [load_button1,load_button2,load_button3];
+let taskContainer = document.querySelector('.task-container');
 
-load_button1.addEventListener('click', function() {
-    loadTask(task1, document.querySelector('.task-container'));
-    hideLoadButtons();
-});
+if(document.getElementById('random-task-type').innerHTML == 'match'){
+    taskContainer.style.width = '50vw';
+    document.getElementById('next-task').onclick = (e)=>{
+        e.preventDefault();
+        loadTask(makeRandomMatchTask(6), taskContainer);
+    };
+    loadTask(makeRandomMatchTask(6), taskContainer);
+    
+}
+if(document.getElementById('random-task-type').innerHTML == 'order'){
+    loadTask(makeRandomOrderTask(), taskContainer);
+}
 
-load_button2.addEventListener('click', () =>{
-    loadTask(task3, document.querySelector('.task-container'));
-    hideLoadButtons();
-});
+function makeRandomMatchTask(pairCount = 8){
+    let numbersAdded = [];
+    let allMatchPairs = JSON.parse(localStorage.getItem('matchPairs'));
+    let animalsChekbox = document.getElementById('animals');
+    let psyhologyChekbox = document.getElementById('psyhology');
+    let checkBoxes = [animalsChekbox, psyhologyChekbox];
 
-load_button3.addEventListener('click', () =>{
-    loadTask(task5, document.querySelector('.task-container'));
-    hideLoadButtons();
-});
+    let matchPairs = [];
+    if(animalsChekbox.checked){
+        for (const i of allMatchPairs.animals) {
+            matchPairs.push(i);
+        }
+    }
+    if(psyhologyChekbox.checked){
+        for (const i of allMatchPairs.psyhology) {
+            matchPairs.push(i);
+        }
+    }
+    
+    let task = {"type":"match", "tasktext": "Match words and translations"}
+    let content = [[],[]];
+    for(let i = 0; i < pairCount; i++){
+        let rand = randomInt(matchPairs.length-1);
+        while(numbersAdded.includes(rand)){
+            rand = randomInt(matchPairs.length-1);
+        }
+        content[0].push(matchPairs[rand].eng);
+        content[1].push(matchPairs[rand].ru);
+        numbersAdded.push(rand);
+    }
+    task.content = content;
+    return task;
+}
+
+function makeRandomOrderTask(){
+    let task = { type: 'order',tasktext: 'Put words in correct order'};
+    let sentences = JSON.parse(localStorage.getItem('orderTasks'));
+    task.content = sentences[randomInt(sentences.length - 1)];
+    return task;
+}
+
+function randomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 function readFile(input){
     let reader = new FileReader();
@@ -43,6 +83,7 @@ function hideLoadButtons(){
 }
 
 function loadTask(task, container = document.body) {
+    container.innerHTML = '';
     switch (task.type) {
         case 'test':
             loadTestTask(task, container);
@@ -111,7 +152,7 @@ function loadMatchTask(task, container){
         }
         function rejoinWords(from,to){
             connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-            lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
+            lines.push(drawCurveSVG(from,to,container,'#350066'));
             from.className = "matchelem matchelemjoint";
             from.disabled = true;
             to.className = "matchelem matchelemjoint";
@@ -128,7 +169,7 @@ function loadMatchTask(task, container){
         }
         function rejoinWords(from,to){
             connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-            lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
+            lines.push(drawCurveSVG(from,to,container,'#350066'));
             from.className = "matchelem matchelemjoint";
             from.disabled = true;
             to.className = "matchelem matchelemjoint";
@@ -195,7 +236,7 @@ function loadMatchTask(task, container){
 
     function joinWords(from,to){
         connections[task.content[0].indexOf(from.innerHTML)] = to.innerHTML;
-        lines.push(drawCurveSVG(from,to,container,'#4f4f4f'));
+        lines.push(drawCurveSVG(from,to,container,'#350066'));
         joinedButtons.push(from);
         joinedButtons.push(to);
         from.className = "matchelem matchelemjoint";
@@ -206,6 +247,7 @@ function loadMatchTask(task, container){
     }
     
     let clearBtn = document.createElement('button');
+    clearBtn.id = 'clear-btn';
     clearBtn.innerHTML = "Clear connections";
     clearBtn.style.zIndex = 2;
     clearBtn.addEventListener('click',function(){
@@ -222,14 +264,13 @@ function loadMatchTask(task, container){
             connections.push("");
         }
     });
+    
     taskBorder.append(clearBtn);
 
     let checkBtn = document.createElement('button');
     checkBtn.style.zIndex = 4;
     checkBtn.innerHTML = "Check";
     checkBtn.addEventListener('click',function(){
-        console.log(task.content[1]);
-        console.log(connections);
         for(let i = 0; i < task.content[0].length; i++){
             if(task.content[1][i] == connections[i]){
                 buttons[i*2].style.backgroundColor = "lightgreen";
@@ -240,6 +281,12 @@ function loadMatchTask(task, container){
         }
     });
     taskBorder.append(checkBtn);
+
+    document.getElementById('next-task').onclick = (e)=>{
+        e.preventDefault();
+        loadTask(makeRandomMatchTask(6), taskContainer);
+        clearBtn.click();
+    };
     
     container.append(div);
 }
@@ -296,6 +343,7 @@ function loadOrderTask(task, container)
             return;
         }
         if(orderedElements.includes(item)){
+            console.log(item);
             orderedElements.splice(orderedElements.indexOf(item),1);
         }
         if(orderedElements.length > 0){
@@ -322,11 +370,11 @@ function loadOrderTask(task, container)
     answers = [...task.content];
     answers.sort(()=>Math.random()-0.5)
     
-    for(let i of answers){
+    for(let i = 0; i < answers.length; i++){
         let orderElem = document.createElement('button');
         orderElem.className = "order-elem";
-        orderElem.id = 'order-elem-' + i;
-        orderElem.innerHTML = i;
+        orderElem.id = 'order-elem-' + answers[i] + i;
+        orderElem.innerHTML = answers[i];
         orderElem.draggable = true;
         orderElem.ondragstart = drag;
         taskBorder.append(orderElem);
@@ -375,7 +423,7 @@ function drawLineSVG(from,to,container,color = '#f2f7ff'){
     return line;
 }
 
-function drawCurveSVG(from,to,container,color = '#222222'){
+function drawCurveSVG(from,to,container,color = '#350066'){
     let svg = document.querySelector("svg");
     var boxFrom = from.getBoundingClientRect();
     var boxTo = to.getBoundingClientRect();
