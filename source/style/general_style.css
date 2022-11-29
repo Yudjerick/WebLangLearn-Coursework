@@ -1,3 +1,28 @@
+body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+main{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    position: relative;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    body{
+        height: auto;
+        overflow-y: scroll;
+    }
+}
+
 header{
     background-image: linear-gradient(rgb(94, 0, 216), rgb(112, 0, 187));
     /*background-image: linear-gradient(rgb(111, 0, 255), rgb(146, 0, 243));*/
@@ -45,21 +70,7 @@ header{
     filter: invert();
 }
 
-body{
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
 
-main{
-    flex-grow: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    position: relative;
-}
 
 nav{
     flex-grow: 1;

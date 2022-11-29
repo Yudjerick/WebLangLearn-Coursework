@@ -10,11 +10,13 @@
     position: relative;
     border-radius: 1vh;
     transition: aspect-ratio 0.3s;
+    padding-top: 15%;
+    padding-bottom: 15%;
 }
 
-.diagonal-card:hover{
+/*.diagonal-card:hover{
     aspect-ratio: 5/5;;
-}
+}*/
 
 .diagonal-card-text-container{
     display: flex;
@@ -32,65 +34,9 @@
     border-radius: 1vmin;
 }
 
-.fly-square{
-    position: absolute;
-    height: calc(100% / 3);
-    aspect-ratio: 1;
-    backdrop-filter: blur(5px);
-    background-color:rgba(158, 211, 255, 0.1);
-    border-radius: inherit;
-    top: calc(50% - 50% / 3);
-    opacity: 0;
-    transition: 1s;
-}
-
-.diagonal-card:hover > .fly-square{
-    opacity: 1;
-}
-
-.anim1{
-    animation: fly 12s ease infinite;
-}
-
-.anim2{
-    animation: fly2 12s ease infinite;
-}
-
-
-@keyframes fly {
-    from{
-        transform: translate(21vmin,21vmin);
-    }
-    25%{
-        transform: translate(21vmin,-21vmin);
-    }
-    50%{
-        transform: translate(-21vmin,-21vmin);
-    }
-    75%{
-        transform: translate(-21vmin,21vmin);
-    }
-    to{
-        transform: translate(21vmin,21vmin);
-    }
-}
-
-@keyframes fly2 {
-    from{
-        transform: translate(-21vmin,-21vmin);
-    }
-    25%{
-        transform: translate(-21vmin,21vmin);
-    }
-    50%{
-        transform: translate(21vmin,21vmin);
-    }
-    75%{
-        transform: translate(21vmin,-21vmin);
-    }
-    to{
-        transform: translate(-21vmin,-21vmin);
-    }
+.diagonal-card-text-container > p{
+    padding-right: 2vmin;
+    padding-left: 2vmin;
 }
 
 .diagonal-card::after{
