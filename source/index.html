@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="style/7_2.css">
         <link rel="stylesheet" href="style/background_blobs.css">
         <link rel="stylesheet" href="style/general_style.css">
+        <link rel="stylesheet" href="style/7_1.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
@@ -16,7 +17,10 @@
     </head>
     <body>
         <header class="header">
-            <h1>WebLangLearn</h1>
+            <form class="topheader">
+                <h1>WebLangLearn</h1>
+                <button class="login-icon" formaction="log_in.html"></button>
+            </form>
             <nav>
                 <form class="nav-container">
                     <button class="nav-button" formaction="index.html">
@@ -43,22 +47,27 @@
         <main>
             <div class="options-container">
                 <div class="option-icon">
-                    <div class="word-card-container">
-                        <div class="word-card main-card">
-                            <p class="rotated-text">word</p>
-                        </div>
-                        <div class="word-card left-card">
-                            <p class="rotated-text">слово</p>
-                        </div>
-                        <div class="word-card right-card">
-                            <p class="symbol-top">A</p>
-                            <p class="card-text">Словарные карточки</p>
-                            <p class="symbol-bottom">次</p>
+                    <div class="diagonal-card color-sheme1">
+                        <div class="diagonal-card-text-container">  
+                            <p><h2>Title</h2>Закрепляйте знания знания по лексике с помощью заданий на сопоставление</p>
                         </div>
                     </div>
                 </div>
-                <div class="option-icon"></div>
-                <div class="option-icon"></div>
+                <div class="option-icon">
+                    <div class="diagonal-card color-sheme2">
+                        <div class="diagonal-card-text-container">  
+                            <p><h2>Title</h2>Упражняйтесь в грамматике с помощью зданий на порядок слов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-icon">
+                    <div class="diagonal-card color-sheme3">
+                        <div class="diagonal-card-text-container">  
+                            <p><h2>Title</h2>Создавайте свои задания с помощью редактора</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="option-text-container">
                     <p class="option-text">Изучайте и запоминайте новые слова с помощью специальных карточек</p>
                 </div>

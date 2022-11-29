@@ -1,7 +1,7 @@
 
 .circle{
     margin: 1vmin;
-    width: 10vmin;
+    width: 7vmin;
     aspect-ratio: 1;
     z-index: 2;
     border-radius: 100vmax;
@@ -40,18 +40,17 @@
     z-index: 1;
     opacity: 1;
     background-color: white;
-    filter: blur(5px);
 }
 
 .glow{
-    width: 10vmin;
+    width: 7vmin;
     aspect-ratio: 1;
     border-radius: 100vmax;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     position: absolute;
     filter: blur(5px);
-    z-index: -1;
-    opacity: 0.2;
+    z-index: 1;
+    opacity: 0.4;
     transition: all 0.5s;
 }
 
@@ -65,35 +64,35 @@
 .vk-style{
     --color1: rgb(0, 217, 255);
     --color2: rgb(20, 5, 223);
-    --logo-url: url(VK_Logo.png);
+    --logo-url: url(../images/VK_Logo.png);
 }
 
 .instagram-style{
     --color1: rgb(255, 123, 0);
     --color2: rgb(223, 5, 132);
-    --logo-url: url(insta.png);
+    --logo-url: url(../images/insta.png);
 }
 
 .youtube-style{
     --color1: rgb(255, 0, 0);
     --color2: rgb(122, 0, 0);
-    --logo-url: url(yt.png);
+    --logo-url: url(../images/yt.png);
 }
 
 .github-style{
     --color1: rgb(68, 0, 255);
     --color2: rgb(9, 0, 24);
-    --logo-url: url(gh.png);
+    --logo-url: url(../images/gh.png);
 }
 
 .telegram-style{
     --color1: rgb(49, 253, 192);
     --color2: rgb(32, 126, 202);
-    --logo-url: url(tg.png);
+    --logo-url: url(../images/tg.png);
 }
 
 .whatsapp-style{
     --color1: rgb(0, 255, 13);
     --color2: rgb(14, 131, 53);
-    --logo-url: url(whatsapp.png);
+    --logo-url: url(../images/whatsapp.png);
 }

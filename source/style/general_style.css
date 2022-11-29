@@ -4,7 +4,21 @@ header{
     margin: 0;
 }
 
-header > h1{
+.topheader{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .nav-container{
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.topheader > h1{
     margin: 0;
     padding: 0;
     font-family: 'Russo One', sans-serif;
@@ -12,6 +26,23 @@ header > h1{
     margin: 0.5vmin;
     color: white;
     text-align: center;
+    align-items: stretch;
+}
+
+.login-icon{
+    position: absolute;
+    right: 0;
+    height: 5vmin;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: none;
+    background-image: url(../images/login.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+    justify-self: right;
+    filter: invert();
 }
 
 body{

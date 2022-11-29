@@ -5,7 +5,7 @@
     background-color: rgb(156, 226, 203, 0.1);
     border-radius: 100vmax;
     filter: blur(2px);
-    z-index: -2;
+    z-index: -10;
     animation-name: flicker;
     animation-iteration-count: infinite;
 }
