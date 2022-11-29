@@ -1,5 +1,5 @@
 'use strict'
-let minSize = 10;
+let minSize = 20;
 let maxSize = 70;
 
 function randomIntBetween(min,max){
@@ -13,11 +13,10 @@ function createStartBlob(){
     blob.style.left = randomIntBetween(0,window.innerWidth) + 'px';
     blob.style.top = randomIntBetween(0,window.innerHeight) + 'px';
     blob.style.animationName = 'flicker';
-    blob.style.animationDuration = randomIntBetween(2000,20000) + 'ms';
+    blob.style.animationDuration = randomIntBetween(20000,50000) + 'ms';
     document.body.append(blob);
 }
 
-createStartBlob();
 createStartBlob();
 createStartBlob();
 createStartBlob();

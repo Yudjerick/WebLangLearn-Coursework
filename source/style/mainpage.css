@@ -4,6 +4,8 @@ body{
     margin: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    background-image: linear-gradient(10deg, rgb(160, 25, 137), rgb(37, 122, 202));
 }
 
 main{

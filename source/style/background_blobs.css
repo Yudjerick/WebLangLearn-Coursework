@@ -6,6 +6,7 @@
     border-radius: 100vmax;
     filter: blur(2px);
     z-index: -2;
+    animation-name: flicker;
     animation-iteration-count: infinite;
 }
 
@@ -18,5 +19,29 @@
     }
     to{
 
+    }
+}
+
+.moving{
+    animation-name: move-up-down;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move-up-down {
+    from{
+        transform: translate(0,20%);
+    }
+    30%{
+        background-color: rgba(37, 226, 240, 0.089);
+    }
+    50%{
+        transform: translate(0,-20%);
+        background-color: rgba(151, 241, 199, 0.082);
+    }
+    70%{
+        background-color: rgba(243, 20, 187, 0.089);
+    }
+    to{
+        transform: translate(0,20%);
     }
 }
