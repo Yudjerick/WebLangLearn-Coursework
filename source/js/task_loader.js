@@ -425,8 +425,8 @@ function drawLineSVG(from,to,container,color = '#f2f7ff'){
 
 function drawCurveSVG(from,to,container,color = '#350066'){
     let svg = document.querySelector("svg");
-    var boxFrom = from.getBoundingClientRect();
-    var boxTo = to.getBoundingClientRect();
+    var boxFrom = getCoords(from);
+    var boxTo = getCoords(to);
     var pointFrom = {x:boxFrom.right, y:boxFrom.top + boxFrom.height/2};
     var pointTo = {x:boxTo.left, y:boxTo.top + boxTo.height/2};
     let path = document.createElementNS('http://www.w3.org/2000/svg','path');;
@@ -438,3 +438,16 @@ function drawCurveSVG(from,to,container,color = '#350066'){
     path.style = `stroke:${color};stroke-width:2;fill:none`;
     return path;
 }
+
+function getCoords(elem) {
+    let box = elem.getBoundingClientRect();
+  
+    return {
+      top: Number(box.top + window.pageYOffset),
+      right: Number(box.right + window.pageXOffset),
+      bottom: Number(box.bottom + window.pageYOffset),
+      left: Number(box.left + window.pageXOffset),
+      height: box.height,
+      width: box.width,
+    };
+  }

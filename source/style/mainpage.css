@@ -9,7 +9,7 @@
 @media (max-aspect-ratio: 1/1) {
     .options-container{
         flex-direction: column;
-        height: 150%;
+        height: 100%;
     }
 }
 @media (min-aspect-ratio: 1/1) {
