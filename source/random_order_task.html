@@ -15,10 +15,34 @@
     </head>
     <body>
         <header class="header">
-            <h1>WebLangLearn</h1>
+            <div class="topheader">
+                <button class="burger">B</button>
+                <h1>WebLangLearn</h1>
+                <button class="login-icon" formaction="log_in.html"></button>
+            </div>
             <nav>
+                <form class="burger-nav-container">
+                    <button class="burger-nav-button" formaction="index.html">
+                        <p class="nav-button-text">Главная</p>
+                    </button>
+                    <button class="burger-nav-button">
+                        <p class="nav-button-text">Карточки</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="random_match_task.html">
+                        <p class="nav-button-text">Задания на лексику</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="random_order_task.html">
+                        <p class="nav-button-text">Задания на грамматику</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="task_editor.html">
+                        <p class="nav-button-text">Редактор</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="contacts.html">
+                        <p class="nav-button-text">Контакты</p>
+                    </button>
+                </form>
                 <form class="nav-container">
-                    <button class="nav-button">
+                    <button class="nav-button" formaction="index.html">
                         <p class="nav-button-text">Главная</p>
                     </button>
                     <button class="nav-button">
@@ -33,7 +57,7 @@
                     <button class="nav-button" formaction="task_editor.html">
                         <p class="nav-button-text">Редактор</p>
                     </button>
-                    <button class="nav-button">
+                    <button class="nav-button" formaction="contacts.html">
                         <p class="nav-button-text">Контакты</p>
                     </button>
                 </form>
@@ -46,6 +70,6 @@
         </div>
         <script src="js/storage.js"></script>
         <script page="1" type="text/javascript" src="js/task_loader.js"></script>
-        <script src="js/background_blobs.js"></script>
+        <script src="js/burger_menu.js"></script>
     </body>
 </html>

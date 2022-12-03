@@ -1,4 +1,9 @@
 body{
+    background-color: black;
+    background-image: linear-gradient(10deg, rgb(151, 0, 126), rgb(0, 97, 189));
+    background-repeat: no-repeat;
+    background-size:100%;
+    height:fit-content;
     height: 100vh;
     padding: 0;
     margin: 0;
@@ -6,22 +11,31 @@ body{
     flex-direction: column;
     overflow-y: hidden;
     overflow-x: hidden;
+    justify-content: space-between;
 }
 
 main{
+    width: 100vw;
     flex-grow: 2;
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
+    justify-content: space-between;
     position: relative;
+
 }
 
 @media (max-aspect-ratio: 1/1) {
     body{
         height: auto;
+        min-height: 100vh;
         overflow-y: scroll;
     }
+    main{
+        height: auto;
+    }
 }
+
+
 
 header{
     background-image: linear-gradient(rgb(94, 0, 216), rgb(112, 0, 187));
@@ -34,6 +48,7 @@ header{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 @media (max-aspect-ratio: 1/1) {
@@ -41,6 +56,38 @@ header{
         visibility: hidden;
         position: absolute;
     }
+    .burger{
+        position: absolute;
+        left: 0;
+    }
+}
+
+
+@media (min-aspect-ratio: 1/1) {
+    .burger{
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.burger{
+    border: none;
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color:transparent;
+    background-image: url(../images/burger.png);
+    filter: invert();
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.burger-nav-container{
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100vw;
 }
 
 .topheader > h1{
@@ -70,8 +117,6 @@ header{
     filter: invert();
 }
 
-
-
 nav{
     flex-grow: 1;
     display: flex;
@@ -86,6 +131,22 @@ nav{
     flex-direction: row;
     justify-content: space-around;
     overflow: hidden;
+}
+
+.burger-nav-button{
+    position: relative;
+    background-image: linear-gradient(rgb(44, 45, 47), rgb(51, 53, 58));
+    width: 100vw;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.2rem;
+    color: rgb(216, 216, 216);
+    text-align: start;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0;
+    margin: 0;
+    z-index: 500;
 }
 
 .nav-button{
@@ -104,11 +165,11 @@ nav{
     filter: none;
 }
 
-.nav-button:hover{
+.nav-button:hover, .burger-nav-button:hover{
     color: white;
 }
 
-.nav-button::before{
+.nav-button::before, .burger-nav-button::before{
     content: '';
     width: 100%;
     height: 100%;
@@ -120,7 +181,7 @@ nav{
     transition: 0.3s;
 }
 
-.nav-button:hover::before{
+.nav-button:hover::before, .burger-nav-button:hover::before{
     transform: translate(0);
 }
 

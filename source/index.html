@@ -17,11 +17,32 @@
     </head>
     <body>
         <header class="header">
-            <form class="topheader">
+            <div class="topheader">
+                <button class="burger"></button>
                 <h1>WebLangLearn</h1>
                 <button class="login-icon" formaction="log_in.html"></button>
-            </form>
+            </div>
             <nav>
+                <form class="burger-nav-container">
+                    <button class="burger-nav-button" formaction="index.html">
+                        <p class="nav-button-text">Главная</p>
+                    </button>
+                    <button class="burger-nav-button">
+                        <p class="nav-button-text">Карточки</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="random_match_task.html">
+                        <p class="nav-button-text">Задания на лексику</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="random_order_task.html">
+                        <p class="nav-button-text">Задания на грамматику</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="task_editor.html">
+                        <p class="nav-button-text">Редактор</p>
+                    </button>
+                    <button class="burger-nav-button" formaction="contacts.html">
+                        <p class="nav-button-text">Контакты</p>
+                    </button>
+                </form>
                 <form class="nav-container">
                     <button class="nav-button" formaction="index.html">
                         <p class="nav-button-text">Главная</p>
@@ -114,6 +135,6 @@
                 </div>
             </footer>
         </main>
-        <script src="js/background_blobs.js"></script>
+        <script src="js/burger_menu.js"></script>
     </body>
 </html>

@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 30vmin;
+    width: 20vmax;
     aspect-ratio: 5/3;
     position: relative;
     border-radius: 1vh;
@@ -28,7 +28,7 @@
     height: 100%;
     color: white;
     font-family: 'Russo One', sans-serif;
-    background-color: rgba(158, 211, 255, 0.1);
+    background-color: rgb(51, 49, 58);
     backdrop-filter: blur(5px);
     position: relative;
     border-radius: 1vmin;
@@ -42,7 +42,7 @@
 .diagonal-card::after{
     content: '';
     width: 60%;
-    aspect-ratio: 3/7;
+    height: 25vmax;
     position: absolute;
     border-radius: 1vmin;
     background-image: linear-gradient(var(--gradient-color1),var(--gradient-color2));
@@ -56,7 +56,7 @@
     transform: skew(0);
 }
 
-.diagonal-card::before{
+/*.diagonal-card::before{
     content: '';
     width: 60%;
     aspect-ratio: 3/7;
@@ -69,20 +69,20 @@
     filter: blur(30px);
     transform: skew(15deg);
     transition: all 0.3s;
-}
+}*/
 
 .color-sheme1{
-    --gradient-color1: rgb(255, 62, 4);
-    --gradient-color2: rgb(255, 0, 64);
+    --gradient-color1: rgb(182, 56, 255);
+    --gradient-color2: rgb(255, 34, 189);
 }
 
 .color-sheme2{
-    --gradient-color1: rgb(0, 4, 255);
-    --gradient-color2: rgb(0, 255, 200);
+    --gradient-color1: rgb(83, 86, 255);
+    --gradient-color2: rgb(17, 100, 255);
 }
 
 .color-sheme3{
-    --gradient-color1: rgb(252, 255, 58);
-    --gradient-color2: rgb(0, 255, 21);
+    --gradient-color1: rgb(58, 255, 147);
+    --gradient-color2: rgb(0, 153, 255);
 }
 
