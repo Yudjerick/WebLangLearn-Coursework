@@ -1,20 +1,17 @@
 body{
     background-color: black;
-    background-image: linear-gradient(10deg, rgb(151, 0, 126), rgb(0, 97, 189));
+    /*background-image: linear-gradient(10deg, rgb(151, 0, 126), rgb(0, 97, 189));*/
+    background-image: linear-gradient(10deg, rgb(255, 186, 59),rgb(255, 60, 158));
     background-repeat: no-repeat;
     background-size:100%;
-    height:fit-content;
     height: 100%;
     padding: 0;
     margin: 0;
-    /*
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    */
+    justify-content: stretch;
     overflow-y: hidden;
-    overflow-x: hidden;
-    
+    position: relative;
 }
 
 html, body {
@@ -26,26 +23,36 @@ body {
 
 main{
     width: 100%;
-    flex-grow: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: stretch;
     position: relative;
-
+    flex-grow: 2;
 }
 
 @media (max-aspect-ratio: 1/1) {
     body{
         height: auto;
-        min-height: 100%;
+        min-height: 100vh;
         overflow-y: scroll;
     }
     main{
-        height: auto;
+        flex-grow: 2;
+    }
+    .topheader-text{
+        font-size: 8vmin;
     }
 }
 
+@media (min-aspect-ratio: 1/1) {
+    body{
+        min-height: 100vh;
+    }
+    .topheader-text{
+        font-size: 4vmin;
+    }
 
+}
 
 header{
     background-image: linear-gradient(rgb(94, 0, 216), rgb(112, 0, 187));
@@ -86,10 +93,17 @@ header{
     aspect-ratio: 1/1;
     background-color:transparent;
     background-image: url(../images/burger.png);
-    filter: invert();
+    
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    filter: drop-shadow(0 0 0 white) invert();;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.burger:hover{
+    filter: drop-shadow(0 0 2vmin rgb(0, 0, 0)) invert();
 }
 
 .burger-nav-container{
@@ -100,21 +114,36 @@ header{
     height: 100vw;
 }
 
-.topheader > h1{
+.no-style-button{
+    background-color: transparent;
+    border: 0;
+    font-family:unset;
+    color: initial;
+}
+
+.topheader-text{
+    background-color: transparent;
+    border: none;
     margin: 0;
     padding: 0;
     font-family: 'Russo One', sans-serif;
-    font-size: 4vmin;
     margin: 0.5vmin;
     color: white;
     text-align: center;
     align-items: stretch;
+    filter: drop-shadow(0 0 0 white);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.topheader-text:hover{
+    filter: drop-shadow(0 0 2vmin white);
 }
 
 .login-icon{
     position: absolute;
     right: 0;
-    height: 5vmin;
+    height: 100%;
     aspect-ratio: 1;
     background-color: transparent;
     border: none;
@@ -124,7 +153,14 @@ header{
     background-position: center;
     z-index: 2;
     justify-self: right;
-    filter: invert();
+    filter: drop-shadow(0 0 0 rgb(0, 0, 0)) invert();;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+
+.login-icon:hover{
+filter: drop-shadow(0 0 2vmin rgb(0, 0, 0)) invert();
 }
 
 nav{
@@ -200,4 +236,134 @@ nav{
     z-index: 4;
     padding: 0;
     padding-left: 1em;
+}
+
+.circle{
+    margin: 1vmin;
+    width: 7vmin;
+    aspect-ratio: 1;
+    z-index: 2;
+    border-radius: 100vmax;
+    background-color: rgb(38, 41, 44);
+    overflow: hidden;
+    position: relative;
+}
+
+.logo{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+
+    background-image: var(--logo-url);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+    filter: invert();
+}
+
+.moving-gradient{
+    position:absolute;
+    background-image: linear-gradient(var(--color1),var(--color2));
+    width: 100%;
+    height: 100%;
+    top:100%;
+    transition: all 0.5s;
+}
+
+.circle:hover > .moving-gradient{
+    top:0;
+}
+
+.circle:hover + .glow{
+    z-index: 1;
+    opacity: 1;
+    background-color: white;
+}
+
+.glow{
+    width: 7vmin;
+    aspect-ratio: 1;
+    border-radius: 100vmax;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    filter: blur(5px);
+    z-index: 1;
+    opacity: 0.4;
+    transition: all 0.5s;
+}
+
+.social-media-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.vk-style{
+    --color1: rgb(0, 217, 255);
+    --color2: rgb(20, 5, 223);
+    --logo-url: url(../images/VK_Logo.png);
+}
+
+.instagram-style{
+    --color1: rgb(255, 123, 0);
+    --color2: rgb(223, 5, 132);
+    --logo-url: url(../images/insta.png);
+}
+
+.youtube-style{
+    --color1: rgb(255, 0, 0);
+    --color2: rgb(122, 0, 0);
+    --logo-url: url(../images/yt.png);
+}
+
+.github-style{
+    --color1: rgb(68, 0, 255);
+    --color2: rgb(9, 0, 24);
+    --logo-url: url(../images/gh.png);
+}
+
+.telegram-style{
+    --color1: rgb(49, 253, 192);
+    --color2: rgb(32, 126, 202);
+    --logo-url: url(../images/tg.png);
+}
+
+.whatsapp-style{
+    --color1: rgb(0, 255, 13);
+    --color2: rgb(14, 131, 53);
+    --logo-url: url(../images/whatsapp.png);
+}
+
+.footer{
+    margin-top: 10vmin;
+    background-color:rgb(42, 44, 46);
+    flex-direction: row;
+}
+
+.credits{
+    display: block;
+}
+
+.credit-ref{
+    font-size: 1.5vmin;
+    display: block;
+    color: aliceblue;
+}
+
+.socials{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.author-info-text{
+    font-family: 'Open Sans', sans-serif;
+    color: gray;
+    font-size: 3vmin;
+    margin-left: 5vmin;
+    margin-top: 0;
+    margin-bottom: 0;
 }

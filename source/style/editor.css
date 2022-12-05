@@ -6,29 +6,38 @@
 }
 
 .match-pair-list{
+    overflow: hidden;
+    height: auto;
     font-family: 'Russo One', sans-serif;
     font-size: 3vmin;
-    background-color: blanchedalmond;
+    background-color: rgb(42, 44, 46);
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    width: 30vmin;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10vmin;
+    border-radius: 3vmin;
 }
 
 .match-pair{
-    background-color: aqua;
+    background-color: rgb(38, 41, 44);
+    margin: 1vmin;
+    padding: 1vmin;
+    border-radius: 1vmin;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    filter: drop-shadow(0 0 0.75rem black);
 }
 
 .input-pair{
-    width: 10vmin;
+    min-width: 10vmin;
     border-radius: 1vmin;
 }
 
 .del-button{
-    background-color: rgb(212, 68, 68);
+    background-color: rgb(38, 41, 44);
+    filter: drop-shadow(0 0 0.75rem black);
     font-family: 'Russo One', sans-serif;
     color: white;
     border: solid white 1px;

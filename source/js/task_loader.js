@@ -127,7 +127,11 @@ function loadTestTask(task, container){
 }
 
 function loadMatchTask(task, container){
-    let svgContainer = document.createElementNS('http://www.w3.org/2000/svg','svg');;
+    let svgContainer = document.querySelector('svg');
+    if(svgContainer!=null){
+        svgContainer.remove();
+    }
+    svgContainer = document.createElementNS('http://www.w3.org/2000/svg','svg');
     document.body.prepend(svgContainer);
     let div = document.createElement('div');
     let taskText = document.createElement('p');
@@ -367,6 +371,13 @@ function loadOrderTask(task, container)
         
     }
 
+    function touch(ev){
+        let item = ev.target;
+        let dropzone = document.getElementById('drop-zone');
+        dropzone.append(item);
+        orderedElements.push(item);
+    }
+
     answers = [...task.content];
     answers.sort(()=>Math.random()-0.5)
     
@@ -377,6 +388,7 @@ function loadOrderTask(task, container)
         orderElem.innerHTML = answers[i];
         orderElem.draggable = true;
         orderElem.ondragstart = drag;
+        orderElem.ontouchend = touch;
         taskBorder.append(orderElem);
     }
     container.append(div);

@@ -11,65 +11,17 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Russo+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header class="header">
-            <div class="topheader">
-                <button class="burger">B</button>
-                <h1>WebLangLearn</h1>
-                <button class="login-icon" formaction="log_in.html"></button>
-            </div>
-            <nav>
-                <form class="burger-nav-container">
-                    <button class="burger-nav-button" formaction="index.html">
-                        <p class="nav-button-text">Главная</p>
-                    </button>
-                    <button class="burger-nav-button">
-                        <p class="nav-button-text">Карточки</p>
-                    </button>
-                    <button class="burger-nav-button" formaction="random_match_task.html">
-                        <p class="nav-button-text">Задания на лексику</p>
-                    </button>
-                    <button class="burger-nav-button" formaction="random_order_task.html">
-                        <p class="nav-button-text">Задания на грамматику</p>
-                    </button>
-                    <button class="burger-nav-button" formaction="task_editor.html">
-                        <p class="nav-button-text">Редактор</p>
-                    </button>
-                    <button class="burger-nav-button" formaction="contacts.html">
-                        <p class="nav-button-text">Контакты</p>
-                    </button>
-                </form>
-                <form class="nav-container">
-                    <button class="nav-button" formaction="index.html">
-                        <p class="nav-button-text">Главная</p>
-                    </button>
-                    <button class="nav-button">
-                        <p class="nav-button-text">Карточки</p>
-                    </button>
-                    <button class="nav-button" formaction="random_match_task.html">
-                        <p class="nav-button-text">Задания на лексику</p>
-                    </button>
-                    <button class="nav-button" formaction="random_order_task.html">
-                        <p class="nav-button-text">Задания на грамматику</p>
-                    </button>
-                    <button class="nav-button" formaction="task_editor.html">
-                        <p class="nav-button-text">Редактор</p>
-                    </button>
-                    <button class="nav-button" formaction="contacts.html">
-                        <p class="nav-button-text">Контакты</p>
-                    </button>
-                </form>
-            </nav>
-        </header>
         <var style="visibility:hidden; position:absolute" id="random-task-type">order</var>
-        <div class="info">Some info about how this type of tasks works</div>
+        <div class="info"></div>
         <div class="task-zone">
             <div class="task-container"></div>
         </div>
         <script src="js/storage.js"></script>
         <script page="1" type="text/javascript" src="js/task_loader.js"></script>
-        <script src="js/burger_menu.js"></script>
+        <script src="js/header_load.js"></script>
     </body>
 </html>
