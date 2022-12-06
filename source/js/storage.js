@@ -31,8 +31,8 @@ var matchPairs = {"animals":[{"eng":"Badger","ru":"Барсук"},
 {"eng":"Conscience","ru":"Совесть"}]}
 
 let orderSentences = ["Have you ever been in Paris?", "He seems to be confused by what just happened.","I had my hair cut yesterday.",
-"I was doing my homework when I heard you singing.","The future belongs to those, who believe in beauty of their dreams.","When inspiration does not come to me, I go halfway to meet it.",
-"Illusion is the first of all pleasures.","All we have to decide is what to do with the time that is given to us.","Choose a job you love, and you will never have to work a day in your life.","In the middle of difficulty lies opportunity.",
+"I was doing my homework when you came.",
+"Illusion is the first of all pleasures.","I have not done my coursework yet","What am I supposed to do now?"
 ];
 var orderTasks = [];
 for (const i of orderSentences) {

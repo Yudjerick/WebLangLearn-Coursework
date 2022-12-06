@@ -48,7 +48,7 @@ svg{
 }
 
 .task-container{
-    margin: 0;
+    margin: 5vmin;
     padding: 2.5vmin;
     width: 90vw;
     min-width: 300px;
@@ -95,7 +95,7 @@ canvas{
     justify-content: space-between;
 }
 
-.matchelem{
+.matchelem, .order-elem{
     font-family: 'Montserrat', sans-serif;
     width:fit-content;
     height: fit-content;
@@ -109,8 +109,12 @@ canvas{
     border-radius: 100vmax;
     filter: drop-shadow(0 0 5px rgba(82, 86, 92, 0.5));
     border: solid 2px transparent;
+    cursor:pointer;
 }
 
+.order-elem{
+    cursor: grab;
+}
 
 button{
     font-family: 'Montserrat', sans-serif;
@@ -138,7 +142,7 @@ button{
     color:rgb(174, 174, 175);
 }
 
-.order-elem{
+/*.order-elem{
     font-family: 'Russo One', sans-serif;
     width:fit-content;
     height: fit-content;
@@ -152,7 +156,7 @@ button{
     border-radius: 2vmin;
     filter: drop-shadow(0 0 5px rgba(82, 86, 92, 0.5));
     border: solid 2px transparent;
-}
+}*/
 
 .order-task-container{
     display: flex;
@@ -160,6 +164,7 @@ button{
     justify-content: flex-start;
     min-height: 7vh;
     position: relative;
+    flex-wrap: wrap;
 }
 
 .order-task-dropzone{
@@ -170,26 +175,21 @@ button{
     position: relative;
     border-radius: 3vmin;
     border: solid rgb(255, 255, 255) 2px;
-    overflow:hidden;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    
 }
 
-.info{
-    font-family: 'Russo One', sans-serif;
-    font-size: 3vmin;
-    padding:4vmin;
-    color: rgb(255, 255, 255);
+.order-task-dropzone::-webkit-scrollbar {
+    display: none;
 }
 
-.socials{
-    background-color:rgb(42, 44, 46);
-    grid-column: span 3;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
+
 
 .task-settings-container{
+    max-width: 40vmax;
+    width: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -208,6 +208,19 @@ button{
 }
 
 .category-checkbox{
-    
+    word-wrap: break-word;
     font-size: 1.3vmax;
 }
+
+.file-input{
+    border-radius: 1vmin;
+    margin: 2vmin;
+    background-color: rgb(38, 41, 44);
+    filter: drop-shadow(0 0 0.1rem black);
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    padding: 1vmin;
+}
+

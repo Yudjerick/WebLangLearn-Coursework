@@ -35,10 +35,73 @@
     border-radius: 1vmin;
 }
 
+.button-background{
+    margin: 5vmin;
+    height: 10vmin;
+    width: 10vmin;
+    background-color: rgb(38, 41, 44);
+    filter: drop-shadow(0 0 0.75rem black);
+    position: relative;
+    border: none;
+    padding: 0;
+    border-radius: 100vmax;
+}
+
+.plus{
+
+    height: 10vmin;
+    width: 10vmin;
+    background-color: transparent;
+    background-image: url('../images/plus.png');
+    filter: invert();
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+}
+
+.download{
+    height: 10vmin;
+    width: 10vmin;
+    background-color: transparent;
+    background-image: url('../images/download.png');
+    filter: invert();
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+}
+
+.tasktext{
+    margin: 3vmin;
+    border-radius: 1vmin;
+}
+
 .del-button{
     background-color: rgb(38, 41, 44);
     filter: drop-shadow(0 0 0.75rem black);
     font-family: 'Russo One', sans-serif;
     color: white;
     border: solid white 1px;
+}
+
+.task-placeholder{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    padding-left: 5vmin;
+    font-size: 2vmin;
+}
+
+#task-name-input{
+    margin: 3vmin;
+    border-radius: 1vmin;
+}
+
+.button-description{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    padding-left: 5vmin;
+    font-size: 2vmin;
 }

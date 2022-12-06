@@ -10,16 +10,24 @@
         <link rel="stylesheet" href="style/background_blobs.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Russo+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     </head>
     <body>
         <var style="visibility:hidden; position:absolute" id="random-task-type">order</var>
-        <div class="info"></div>
-        <div class="task-zone">
-            <div class="task-container"></div>
-        </div>
+        <main>
+            <div class="info">Перетащите слова в верхнюю область, чтобы они расположились в правильном порядке</div>
+            <div class="task-zone">
+                <div class="task-container"></div>
+            </div>
+            <div class="task-settings-container">
+                <form class="categories">
+                    <p class="category-checkbox">Сгенерируйте задание</p>
+                    <button id="next-task">Next task</button>
+                </form>
+            </div>
+        </main>
         <script src="js/storage.js"></script>
         <script page="1" type="text/javascript" src="js/task_loader.js"></script>
         <script src="js/header_load.js"></script>

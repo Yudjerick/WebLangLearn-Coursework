@@ -13,38 +13,38 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Russo+One&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     </head>
     <body>
         <main>
             <p class="welcome-text">Добро пожаловать на WebLangLearn!</p>
-            <div class="options-container">
-                <div class="option-icon">
+            <form class="options-container">
+                <button class="option-icon" formaction="random_match_task.html">
                     <div class="diagonal-card color-sheme1">
                         <div class="diagonal-card-text-container">  
                             <h2>Лексика</h2>
                             <p>Закрепляйте знания знания по лексике с помощью заданий на сопоставление</p>
                         </div>
                     </div>
-                </div>
-                <div class="option-icon">
+                </button>
+                <button class="option-icon" formaction="random_order_task.html">
                     <div class="diagonal-card color-sheme2">
                         <div class="diagonal-card-text-container">  
                             <h2>Грамматика</h2>
                             <p>Упражняйтесь в грамматике с помощью зданий на порядок слов</p>
                         </div>
                     </div>
-                </div>
-                <div class="option-icon">
+                </button>
+                <button class="option-icon" formaction="task_editor.html">
                     <div class="diagonal-card color-sheme3">
                         <div class="diagonal-card-text-container">  
                             <h2>Редактор</h2>
                             <p>Создавайте свои задания с помощью редактора</p>
                         </div>
                     </div>
-                </div>
-            </div>
+                </button>
+            </form>
         </main>
         <script src="js/header_load.js"></script>
     </body>

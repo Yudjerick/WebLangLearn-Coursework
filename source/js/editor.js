@@ -1,16 +1,26 @@
 let listContainer = document.getElementById('match-pair-list');
 let pairs = [];
 
+let taskPlaceholder = document.getElementById('task-placeholder');
+let nameInput = document.getElementById('task-name-input');
+
 document.getElementById('add-pair').onclick = ()=>{
     addEmptyPair();
+    if(document.getElementById('task-placeholder')){
+        document.getElementById('task-placeholder').remove();
+    }
 }
 
 document.getElementById('download').onclick = function() {
-    //let text = JSON.stringify(makeJSON());
-    let text = JSON.stringify(makeWordPairs());
+    let text = JSON.stringify(makeJSON());
     let myData = 'data:application/txt;charset=utf-8,' + encodeURIComponent(text);
     this.href = myData;
-    this.download = 'data.txt';
+
+    let filename = 'task';
+    if(nameInput.value != ''){
+        filename = nameInput.value;
+    }
+    this.download = filename + '.txt';
 }
 
 function addEmptyPair(){
@@ -23,6 +33,9 @@ function addEmptyPair(){
     del_btn.onclick = ()=>{
         pairs.splice(pairs.indexOf(this.parent));
         newPair.remove();
+        if(pairs.length == 0){
+            listContainer.append(taskPlaceholder);
+        }
         console.log(pairs);
     }
     pairs.push(newPair);

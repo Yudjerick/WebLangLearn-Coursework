@@ -9,18 +9,30 @@
         <link rel="stylesheet" href="style/general_style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Russo+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     </head>
     <body>
         <main>
+            <div class="info">Создавайте свои задания на соединение слова и его перевода</div>
+            <input type="text" id="task-name-input" placeholder="Введите название задания">
+            <textarea class="tasktext" name="tasktext" id="tasktext" cols="30" rows="10" placeholder="Введите текст, который будет отбражатся перед заданием"></textarea>
             <div class="editor-frame">
                 <div class="match-pair-list" id="match-pair-list">
+                    <p class="task-placeholder" id="task-placeholder">Пар слов пока не добавлено</p>
                 </div>
+                
             </div>
-            <textarea name="tasktext" id="tasktext" cols="30" rows="10"></textarea>
-            <button id="add-pair">+</button>
-            <a id="download">Save</a>
+            <div style="display: flex;flex-direction:row;align-items: center;">
+                <button class="button-background" id="add-pair"><div class="plus"></div></button>
+                <p class="button-description">Нажмите, чтобы добавить новую пару слов</p>
+            </div>
+            <div style="display: flex;flex-direction:row;align-items: center;">
+                <a id="download"><div class="button-background"><div class="download"></div></div></a>
+                <p class="button-description">Нажмите, чтобы скачать задание</p>
+            </div>
+            
         </main> 
     </body>
     <script src="js/editor.js"></script>

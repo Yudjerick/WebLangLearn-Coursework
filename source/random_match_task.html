@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="style/7_2.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Russo+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -24,9 +23,16 @@
             <div class="task-container"></div>
             <div class="task-settings-container">
                 <form class="categories">
+                    <p class="category-checkbox">Выберите категории для генерации задания</p>
                     <p><input class="category-checkbox" type="checkbox" id="animals" checked>Animals</p>
                     <p><input class="category-checkbox" type="checkbox" id="psyhology" >Psyhology</p>
                     <button id="next-task">Next task</button>
+                    <p class="category-checkbox">Или загрузите задание созданное в редакторе</p>
+                    <label class="file-input">
+                        <input style="display: none;" id="load-task" type="file" onchange="readFile(this)">
+                        Выберите файл
+                    </label>
+                    
                 </form>
             </div>
         </div>

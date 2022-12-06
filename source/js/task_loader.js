@@ -261,6 +261,7 @@ function loadMatchTask(task, container){
         for(let button of buttons){
             button.disabled = false;
             button.className = "matchelem";
+            button.style.backgroundColor = "white";
         }
         joinedButtons = [];
         connections = [];
@@ -310,7 +311,7 @@ function loadOrderTask(task, container)
     div.prepend(taskText);
     div.append(taskBorder2);
     div.append(taskBorder);
-    checkBtn = document.createElement('button');
+    let checkBtn = document.createElement('button');
     checkBtn.innerHTML = "Check";
     div.append(checkBtn);
     checkBtn.onclick = (e)=>{
@@ -322,6 +323,16 @@ function loadOrderTask(task, container)
                 orderedElements[i].style.backgroundColor = "lightcoral";
             }
         }
+    }
+    let resetBtn = document.createElement('button');
+    resetBtn.innerHTML = "Reset";
+    div.append(resetBtn);
+    resetBtn.onclick = (e)=>{
+        for(let i = 0; i < orderedElements.length; i++){
+            orderedElements[i].style.backgroundColor = "white";
+            taskBorder.append(orderedElements[i]);
+        }
+        orderedElements = [];
     }
     taskBorder2.ondragover = allowDrop;
     taskBorder2.ondrop = drop;
