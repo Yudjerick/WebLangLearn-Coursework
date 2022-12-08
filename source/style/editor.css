@@ -19,6 +19,10 @@
     border-radius: 3vmin;
 }
 
+main{
+    align-items: stretch;
+}
+
 .match-pair{
     background-color: rgb(38, 41, 44);
     margin: 1vmin;

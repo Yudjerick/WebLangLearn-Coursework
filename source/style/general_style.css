@@ -28,6 +28,7 @@ main{
     justify-content: stretch;
     position: relative;
     flex-grow: 2;
+    align-items: center;
 }
 
 @media (max-aspect-ratio: 1/1) {

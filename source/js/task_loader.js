@@ -311,6 +311,10 @@ function loadOrderTask(task, container)
     div.prepend(taskText);
     div.append(taskBorder2);
     div.append(taskBorder);
+    taskBorder2.onwheel = (e) => {
+        e.preventDefault();
+        e.target.scrollLeft += e.deltaY;
+    }
     let checkBtn = document.createElement('button');
     checkBtn.innerHTML = "Check";
     div.append(checkBtn);

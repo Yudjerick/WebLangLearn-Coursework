@@ -48,16 +48,14 @@ svg{
 }
 
 .task-container{
-    margin: 5vmin;
+    margin: 4vmin;
     padding: 2.5vmin;
     width: 90vw;
     min-width: 300px;
     background-color: rgba(255, 255, 255, 0.205);
     backdrop-filter: blur(10px);
     border-radius: 3vmin;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    overflow: hidden;
 }
 
 @media (max-aspect-ratio: 4/3){
@@ -194,7 +192,7 @@ button{
     flex-direction: row;
     justify-content: space-around;
     border-radius: 2vmin;
-    margin: 5vmin;
+    margin: 4vmin;
     overflow: hidden;
     background-color: blanchedalmond;
 }
