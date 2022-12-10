@@ -55,6 +55,7 @@
     padding-left: 2vmin;
 }
 
+
 .diagonal-card::after{
     content: '';
     width: 60%;

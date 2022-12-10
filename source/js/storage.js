@@ -14,12 +14,16 @@ var matchPairs = {"animals":[{"eng":"Badger","ru":"Барсук"},
 {"eng":"Wasp","ru":"Оса"},
 {"eng":"Hornet","ru":"Шершень"},
 {"eng":"Ostrich","ru":"Страус"},
+{"eng":"Snail","ru":"Улитка"},
+{"eng":"Turtle","ru":"Черепаха"},
 {"eng":"Elephant","ru":"Слон"}],
 "psyhology":
 [{"eng":"Passion","ru":"Страсть"},
 {"eng":"Temptation","ru":"Искушение"},
 {"eng":"Sorrow","ru":"Печаль"},
 {"eng":"Envy","ru":"Зависть"},
+{"eng":"Laziness","ru":"Лень"},
+{"eng":"Influence","ru":"Влияние"},
 {"eng":"Pride","ru":"Гордость"},
 {"eng":"Anxiety","ru":"Тревожность"},
 {"eng":"Addiction","ru":"Зависимость"},
@@ -31,7 +35,7 @@ var matchPairs = {"animals":[{"eng":"Badger","ru":"Барсук"},
 {"eng":"Conscience","ru":"Совесть"}]}
 
 let orderSentences = ["Have you ever been in Paris?", "He seems to be confused by what just happened.","I had my hair cut yesterday.",
-"I was doing my homework when you came.",
+"I was doing my homework when you came.","Could you tell me where John is?",
 "Illusion is the first of all pleasures.","I have not done my coursework yet","What am I supposed to do now?"
 ];
 var orderTasks = [];

@@ -23,6 +23,19 @@ document.getElementById('download').onclick = function() {
     this.download = filename + '.txt';
 }
 
+function makeJSON(){
+    let result = { type: "match"};
+    result.tasktext = document.getElementById('tasktext').value;
+    a = [];
+    b = [];
+    for (const i of pairs) {
+        a.push(i.children[0].value);
+        b.push(i.children[1].value);
+    }
+    result.content = [a,b];
+    return result;
+}
+
 function addEmptyPair(){
     let newPair = document.createElement('div');
     newPair.className = 'match-pair';
@@ -54,15 +67,3 @@ function makeWordPairs(){
     return results;
 }
 
-function makeJSON(){
-    let result = { type: "match"};
-    result.tasktext = document.getElementById('tasktext').value;
-    a = [];
-    b = [];
-    for (const i of pairs) {
-        a.push(i.children[0].value);
-        b.push(i.children[1].value);
-    }
-    result.content = [a,b];
-    return result;
-}

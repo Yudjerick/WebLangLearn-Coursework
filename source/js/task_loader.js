@@ -456,19 +456,19 @@ function drawCurveSVG(from,to,container,color = '#350066'){
     var boxTo = getCoords(to);
     var pointFrom = {x:boxFrom.right, y:boxFrom.top + boxFrom.height/2};
     var pointTo = {x:boxTo.left, y:boxTo.top + boxTo.height/2};
-    let path = document.createElementNS('http://www.w3.org/2000/svg','path');;
+    let path = document.createElementNS('http://www.w3.org/2000/svg','path');
     svg.append(path);
-    let distanceX = pointTo.x = pointTo.x;
+    let distanceX = pointTo.x - pointFrom.x;
     let cx1 = pointFrom.x + distanceX/5;
     let cx2 = pointTo.x - distanceX/5;
-    path.setAttribute('d',`M ${pointFrom.x}, ${pointFrom.y} C ${cx1}, ${pointFrom.y} ${cx2}, ${pointTo.y} ${pointTo.x}, ${pointTo.y}`);
+    path.setAttribute('d',`M ${pointFrom.x}, ${pointFrom.y} C ${cx1},
+     ${pointFrom.y} ${cx2}, ${pointTo.y} ${pointTo.x}, ${pointTo.y}`);
     path.style = `stroke:${color};stroke-width:2;fill:none`;
     return path;
 }
 
 function getCoords(elem) {
-    let box = elem.getBoundingClientRect();
-  
+    let box = elem.getBoundingClientRect(); 
     return {
       top: Number(box.top + window.pageYOffset),
       right: Number(box.right + window.pageXOffset),

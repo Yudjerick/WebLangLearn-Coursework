@@ -348,16 +348,25 @@ nav{
     background-color:rgb(42, 44, 46);
     flex-direction: column;
     flex-grow: 2;
+    padding-bottom: 1vmin;
 }
 
 .credits{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.7vmin;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1vmin;
+}
+
+@media (min-aspect-ratio: 1/1) {
+    .credits{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
 }
 
 .credit-ref{
+    margin-right: 1vmin;
     font-size: 1.5vmin;
     display: block;
     color: aliceblue;
